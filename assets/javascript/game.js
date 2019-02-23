@@ -58,7 +58,6 @@ document.onkeyup = function (event) {
         }
 
     } else {
-        alert("You're repeating a key");
         return false;
     }
 }
