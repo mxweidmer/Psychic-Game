@@ -14,14 +14,30 @@
     <div class="jumbotron jumbotron-fluid bg-success">
         <div class="container">
             <h1 class="display-4 text-center">The Psychic Game</h1>
+            <p class="lead text-center">Guess what letter I'm thinking of.</p>
         </div>
     </div>
 
-    <h3>Guess what letter I'm thinking of.</h3>
-    <h3>Wins: <span id="wins">0</span></h3>
-    <h3>Losses: <span id="losses">0</span></h3>
-    <h3>Guesses left: <span id="guessLeft">10</span></h3>
-    <h3>Guesses so far: <span id="guessPast"></span></h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 justify-content-end">
+                <h3 class="text-center">Wins: <span id="wins">0</span></h3>
+            </div>
+            <div class="col-6">
+                <h3 class="text-center">Losses: <span id="losses">0</span></h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <h3>Guesses left: <span id="guessLeft">10</span></h3>
+        </div>
+        <div class="row justify-content-center">
+            <h3>Guesses so far: <span id="guessPast"></span></h3>
+        </div>
+    </div>
+
+
+
+
 
     <script src="assets/javascript/game.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
