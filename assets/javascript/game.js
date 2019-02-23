@@ -14,8 +14,6 @@ var losses = document.getElementById("losses");
 var guessLeft = document.getElementById("guessLeft");
 var guessPast = document.getElementById("guessPast");
 
-console.log(compChoice);
-
 function updateGame() {
     guessesLeft = 10;
     compChoice = alphabet[Math.floor(Math.random() * alphabet.length) + 1];
