@@ -6,7 +6,7 @@ var lossCount = 0;
 var guessesLeft = 10;
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var guesses = [];
+var guesses = [""];
 var compChoice = alphabet[Math.floor(Math.random() * alphabet.length) + 1];
 
 var wins = document.getElementById("wins");
@@ -17,7 +17,7 @@ var guessPast = document.getElementById("guessPast");
 console.log(compChoice);
 
 function updateGame() {
-    guessesLeft = 9;
+    guessesLeft = 10;
     compChoice = alphabet[Math.floor(Math.random() * alphabet.length) + 1];
     console.log(compChoice);
     guesses = [];
@@ -25,27 +25,40 @@ function updateGame() {
     guessPast.textContent = "";
 }
 
+function checkLetter(user) {
+    for (i = 0; i < guesses.length; i++) {
+        if (guesses[i] === user) {
+            return true;
+        }
+    }
+    return false;
+}
+
 document.onkeyup = function (event) {
 
     userGuess = event.key.toLowerCase();
 
-    if (userGuess === compChoice) {
-        winCount++;
-        alert("You Win!");
-        wins.textContent = winCount;
-        updateGame();
-
-    } else if (guessesLeft > 0) {
-        guessesLeft--;
-        if (guessesLeft === 0) {
-            lossCount++;
-            alert("You lose");
-            losses.textContent = lossCount;
+    if (checkLetter(userGuess) === false) {
+        if (userGuess === compChoice) {
+            winCount++;
+            wins.textContent = winCount;
             updateGame();
+
+        } else if (guessesLeft > 0) {
+            guessesLeft--;
+            if (guessesLeft === 0) {
+                lossCount++;
+                losses.textContent = lossCount;
+                updateGame();
+            } else {
+                guesses.push(userGuess);
+                guessLeft.textContent = guessesLeft;
+                guessPast.textContent += userGuess + ", ";
+            }
         }
 
-        guesses.push(userGuess);
-        guessLeft.textContent = guessesLeft;
-        guessPast.textContent += userGuess + ", ";
+    } else {
+        alert("You're repeating a key");
+        return false;
     }
 }
